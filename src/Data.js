@@ -13,26 +13,29 @@ const Data = () => {
   }
 
   return (
-    <div>
+    <div className="flex justify-center">
       <form
         onSubmit={(e) => {
           e.preventDefault();
         }}
       >
-        <label htmlFor="user">
+        <label className="block" htmlFor="user">
           User
           <input
             type="text"
+            className="p-2 m-4"
             placeholder="Search User"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
         </label>
-        <button onClick={reqData}>Search</button>
+        <button className="bg-blue-300 px-2 py-1 rounded" onClick={reqData}>
+          Search
+        </button>
       </form>
       <div className="flex flex-wrap">
         {user.map((item) => {
-          if (item.name.toLowerCase().indexOf(search) >= 0) {
+          if (item.name.indexOf(search) >= 0) {
             return (
               <div
                 key={item.id}
@@ -43,7 +46,7 @@ const Data = () => {
               </div>
             );
           } else {
-            return <h1>Not Found</h1>;
+            return null;
           }
         })}
       </div>
